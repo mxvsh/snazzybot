@@ -1,7 +1,7 @@
 import { Context } from "telegraf";
 import meta from "./meta";
 
-import ud from "urban-dictionary";
+import * as ud from "urban-dictionary";
 
 const Answer = async (ctx: Context, params?: any) => {
   if (!params) return;
