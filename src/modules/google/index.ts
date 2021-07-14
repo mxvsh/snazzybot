@@ -37,6 +37,6 @@ const Answer = async (ctx, params?) => {
 
 export default {
   handler: Answer,
-  match: /^(what is|who is|what\'s|who\'s) (.*)/,
+  match: /^(what|who|how) (.*)/,
   ...meta,
 };
