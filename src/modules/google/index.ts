@@ -28,7 +28,7 @@ const Answer = async (ctx, params?) => {
           if (text.startsWith("Description")) {
             text = text.replace(/^Description/g, "");
           }
-          answer = text;
+          answer = `<b>${text}</b>`;
           break;
         }
       }
@@ -37,7 +37,9 @@ const Answer = async (ctx, params?) => {
       answer = "Not found.";
     });
 
-  ctx.reply(answer);
+  ctx.reply(answer, {
+    parse_mode: "html",
+  });
 };
 
 export default {
