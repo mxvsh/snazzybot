@@ -1,5 +1,6 @@
 import { Context } from "telegraf";
-import { spawn } from "child_process";
+import axios from "axios";
+import stripAnsi from "strip-ansi";
 
 import meta from "./meta";
 
@@ -7,11 +8,20 @@ const Response = async (ctx: Context, params?: any) => {
   if (!params) return;
   ctx.telegram.sendChatAction(ctx.chat.id, "typing");
 
-  const request = spawn("curl", [`cheat.sh/${params.replace(/ /, "+")}`]);
-  request.stdout.on("data", (data) => {
-    const response = data.toString();
-    ctx.reply(response || "Not found.");
-  });
+  let q = params.replace(/ /, "+");
+
+  axios
+    .get(`https://cheat.sh/${q}`, {
+      headers: {
+        "user-agent": "curl/7.64.1",
+      },
+    })
+    .then(({ data }) => {
+      ctx.telegram.sendDocument(ctx.chat.id, {
+        source: Buffer.from(stripAnsi(data)),
+        filename: `${q.replace("+", " ")}.txt`,
+      });
+    });
 };
 
 export default {
