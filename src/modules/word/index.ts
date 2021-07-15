@@ -23,7 +23,7 @@ const Answer = async (ctx: Context, params?: any) => {
           answerParts.push(
             part.replace(
               /\[(.+)\]/g,
-              `<a href="https://t.me/${ctx.botInfo.username}?start=%3F%20$1">$1</a>`
+              `<a href="https://t.me/${ctx.botInfo.username}?start=$1">$1</a>`
             )
           );
         });
