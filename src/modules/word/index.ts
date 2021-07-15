@@ -17,18 +17,29 @@ const Answer = async (ctx: Context, params?: any) => {
       const result = results[randomIndex];
 
       if (result) {
-        answer = result.definition;
+        let answerParts = [];
+
+        result.definition.split(" ").forEach((part) => {
+          answerParts.push(
+            part.replace(
+              /\[(.+)\]/g,
+              `<a href="https://t.me/${ctx.botInfo.username}?start=%3F%20$1">$1</a>`
+            )
+          );
+        });
+
+        answer = answerParts.join(" ");
       }
     })
     .catch((error) => {
       answer = `${error.message}`;
     });
 
-  ctx.reply(answer);
+  ctx.reply(answer, { parse_mode: "HTML", disable_web_page_preview: true });
 };
 
 export default {
   handler: Answer,
-  match: /^\? (.*)/,
+  match: /^(\?|\/start) (.*)/,
   ...meta,
 };
