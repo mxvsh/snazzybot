@@ -19,16 +19,21 @@ const Answer = async (ctx, params?) => {
       },
     })
     .then(({ data }) => {
-      const classes = ["kno-rdesc"]; // more to add
+      const classes = ["kno-rdesc", ".Z0LcW"]; // more to add
 
       const $ = cheerio.load(data);
       for (let _class of classes) {
-        const text = $(`.${_class}`).text();
-        answer = text;
+        let text = $(`.${_class}`).text();
+        if (text) {
+          if (text.startsWith("Description")) {
+            text = text.replace(/^Description/g, "");
+          }
+          answer = text;
+          break;
+        }
       }
     })
     .catch((err) => {
-      console.log(err);
       answer = "Not found.";
     });
 
