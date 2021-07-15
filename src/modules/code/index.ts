@@ -1,6 +1,7 @@
 import { Context } from "telegraf";
 import axios from "axios";
-import stripAnsi from "strip-ansi";
+
+const stripAnsi = require("strip-ansi");
 
 import meta from "./meta";
 
