@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/xencodes/snazzybot/compare/v1.4.1...v1.4.2) (2021-07-16)
+
+
+### 🐛 Bug Fixes
+
+* just a minor fix ([658df23](https://github.com/xencodes/snazzybot/commits/658df23a5f11967cc95c88bf93ade7aaa2205035))
+
 ### [1.4.1](https://github.com/xencodes/snazzybot/compare/v1.4.0...v1.4.1) (2021-07-16)
 
 
