@@ -22,9 +22,9 @@ const Unsplash = async (ctx: Context, params?: any) => {
         return;
       }
       const randomResult = results[Math.floor(Math.random() * results.length)];
-      const result = results[randomResult];
+     
 
-      ctx.replyWithPhoto({ url: result.urls.regular });
+      ctx.replyWithPhoto({ url: randomResult.urls.regular });
     })
     .catch(() => {
       ctx.reply(`Error occurred.`);
