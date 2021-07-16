@@ -20,12 +20,7 @@ const Answer = async (ctx: Context, params?: any) => {
         let answerParts = [];
 
         result.definition.split(" ").forEach((part) => {
-          answerParts.push(
-            part.replace(
-              /\[(.+)\]/g,
-              `<a href="https://t.me/${ctx.botInfo.username}?start=$1">$1</a>`
-            )
-          );
+          answerParts.push(part.replace(/\[(.+)\]/g, `$1`));
         });
 
         answer = answerParts.join(" ");
@@ -40,6 +35,6 @@ const Answer = async (ctx: Context, params?: any) => {
 
 export default {
   handler: Answer,
-  match: /^(\?|\/start) (.*)/,
+  match: /^\? (.*)/,
   ...meta,
 };
