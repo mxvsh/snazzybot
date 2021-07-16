@@ -21,7 +21,7 @@ const register = (bot: Telegraf) => {
     if (replyTo) {
       if (replyTo.from.id == ctx.botInfo.id) {
         rivebot.reply("snazzy", ctx.message.text).then((reply) => {
-          ctx.reply(reply);
+          ctx.reply(reply, { reply_to_message: replyTo.message_id });
         });
       }
     }
