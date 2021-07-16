@@ -22,9 +22,10 @@ const Currency = async (ctx: Context, params?: any) => {
 
           if (rate) {
             ctx.reply(
-              `${amount} ${from.toUpperCase()} in ${to.toUpperCase()}\n\n<code>${Number(
-                rate * amount
-              ).toFixed(2)}</code>`,
+              `${amount} ${from.toUpperCase()} in ${to.toUpperCase()}\n\n<code>${new Intl.NumberFormat(
+                "en-US",
+                { style: "currency", currency: to }
+              ).format(Number((rate * amount).toFixed(2)))}</code>`,
               {
                 parse_mode: "HTML",
               }
