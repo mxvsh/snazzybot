@@ -14,6 +14,7 @@
     "cheerio": "^1.0.0-rc.10",
     "dotenv": "^10.0.0",
     "grammy": "^1.2.0",
+    "glob": "^7.1.7",
     "rivescript": "^2.1.0",
     "strip-ansi": "5.0.0",
     "urban-dictionary": "^3.0.1"
