@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/xencodes/snazzybot/compare/v1.3.0...v1.4.0) (2021-07-16)
+
+
+### 🎉 Features
+
+* add chatbot [rivescript] ([a2f7b9c](https://github.com/xencodes/snazzybot/commits/a2f7b9cdb918deb8e7ab1c9d21df34d094b67940))
+
 ## [1.3.0](https://github.com/xencodes/snazzybot/compare/v1.2.2...v1.3.0) (2021-07-16)
 
 
