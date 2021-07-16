@@ -19,7 +19,7 @@ const Answer = async (ctx, params?) => {
       },
     })
     .then(({ data }) => {
-      const classes = ["kno-rdesc", ".Z0LcW"]; // more to add
+      const classes = ["kno-rdesc", "Z0LcW", "hgKElc"];
 
       const $ = cheerio.load(data);
       for (let _class of classes) {
@@ -44,6 +44,6 @@ const Answer = async (ctx, params?) => {
 
 export default {
   handler: Answer,
-  match: /^(what|who|how) (.*)/,
+  match: /^(snazzy|what's|what is|whats) (.*)/,
   ...meta,
 };
