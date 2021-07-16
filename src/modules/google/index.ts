@@ -22,7 +22,7 @@ const Answer = async (ctx, params?) => {
       },
     })
     .then(({ data }) => {
-      const classes = ["kno-rdesc", "Z0LcW", "hgKElc"];
+      const classes = ["kno-rdesc", "DjWnwf", "Z0LcW", "hgKElc"];
 
       const $ = cheerio.load(data);
       for (let _class of classes) {
