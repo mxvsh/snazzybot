@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import { Context, Telegraf } from "telegraf";
 
+import chabtot from "./chatbot";
 import common from "./common";
 import modules from "./modules";
 
@@ -20,4 +21,6 @@ modules.map((module) => {
 });
 
 common.register(bot);
+chabtot.register(bot);
+
 bot.launch();
