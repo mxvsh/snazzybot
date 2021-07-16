@@ -1,14 +1,14 @@
 import * as dotenv from "dotenv";
-import { Context, Telegraf } from "telegraf";
+import { Context, Bot } from "grammy";
 
-import chabtot from "./chatbot";
+import chatbot from "./chatbot";
 import common from "./common";
 import modules from "./modules";
 
 dotenv.config();
 
 const { BOT_TOKEN } = process.env;
-const bot = new Telegraf(BOT_TOKEN);
+const bot = new Bot(BOT_TOKEN);
 
 modules.map((module) => {
   console.log(`Loading module: ${module.name}`);
@@ -20,7 +20,7 @@ modules.map((module) => {
   });
 });
 
-common.register(bot);
-chabtot.register(bot);
+bot.use(common);
+bot.use(chatbot);
 
-bot.launch();
+bot.start();

@@ -1,4 +1,4 @@
-import { Context } from "telegraf";
+import { Context, InputFile } from "grammy";
 import axios from "axios";
 
 const stripAnsi = require("strip-ansi");
@@ -7,7 +7,7 @@ import meta from "./meta";
 
 const Response = async (ctx: Context, params?: any) => {
   if (!params) return;
-  ctx.telegram.sendChatAction(ctx.chat.id, "typing");
+  ctx.api.sendChatAction(ctx.chat.id, "typing");
 
   let q = params.replace(/ /, "+");
 
@@ -18,10 +18,13 @@ const Response = async (ctx: Context, params?: any) => {
       },
     })
     .then(({ data }) => {
-      ctx.telegram.sendDocument(ctx.chat.id, {
-        source: Buffer.from(stripAnsi(data)),
-        filename: `${q.replace("+", " ")}.txt`,
-      });
+      ctx.api.sendDocument(
+        ctx.chat.id,
+        new InputFile(
+          Buffer.from(stripAnsi(data)),
+          `${q.replace("+", " ")}.txt`
+        )
+      );
     });
 };
 

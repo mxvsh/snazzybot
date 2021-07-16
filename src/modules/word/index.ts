@@ -1,11 +1,11 @@
-import { Context } from "telegraf";
+import { Context } from "grammy";
 import meta from "./meta";
 
 import * as ud from "urban-dictionary";
 
 const Answer = async (ctx: Context, params?: any) => {
   if (!params) return;
-  ctx.telegram.sendChatAction(ctx.chat.id, "typing");
+  ctx.api.sendChatAction(ctx.chat.id, "typing");
   let answer = "";
 
   await ud

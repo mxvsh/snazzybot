@@ -1,12 +1,12 @@
 import axios from "axios";
-import { Context } from "telegraf";
+import { Context } from "grammy";
 import meta from "./meta";
 
 const Unsplash = async (ctx: Context, params?: any) => {
   const { UNSPLASH: CLIENT_ID } = process.env;
   if (!params) return;
 
-  ctx.telegram.sendChatAction(ctx.chat.id, "upload_photo");
+  ctx.api.sendChatAction(ctx.chat.id, "upload_photo");
 
   axios
     .get(
@@ -22,9 +22,8 @@ const Unsplash = async (ctx: Context, params?: any) => {
         return;
       }
       const randomResult = results[Math.floor(Math.random() * results.length)];
-     
 
-      ctx.replyWithPhoto({ url: randomResult.urls.regular });
+      ctx.replyWithPhoto(randomResult.urls.regular);
     })
     .catch(() => {
       ctx.reply(`Error occurred.`);

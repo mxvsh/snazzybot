@@ -1,8 +1,9 @@
 import path from "path";
 import RiveScript from "rivescript";
-import { Context, Telegraf } from "telegraf";
+import { Composer } from "grammy";
 
 const rivebot = new RiveScript();
+const composer = new Composer();
 
 const initBot = () => {
   rivebot.sortReplies();
@@ -15,17 +16,16 @@ rivebot
     console.log("Error when loading files: " + error);
   });
 
-const register = (bot: Telegraf) => {
-  bot.on("message", async (ctx: any) => {
-    const replyTo = ctx.message.reply_to_message;
-    if (replyTo) {
-      if (replyTo.from.id == ctx.botInfo.id) {
-        rivebot.reply("snazzy", ctx.message.text).then((reply) => {
-          ctx.reply(reply, { reply_to_message_id: replyTo.message_id });
-        });
-      }
-    }
-  });
-};
+composer.on("message", async (ctx) => {
+  const replyTo = ctx.message.reply_to_message;
 
-export default { register };
+  if (replyTo) {
+    if (replyTo.from.id == ctx.me.id) {
+      rivebot.reply(String(ctx.from.id), ctx.message.text).then((reply) => {
+        ctx.reply(reply, { reply_to_message_id: replyTo.message_id });
+      });
+    }
+  }
+});
+
+export default composer;

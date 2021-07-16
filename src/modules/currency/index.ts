@@ -1,10 +1,10 @@
 import axios from "axios";
-import { Context } from "telegraf";
+import { Context } from "grammy";
 import meta from "./meta";
 
 const Currency = async (ctx: Context, params?: any) => {
   if (!params) return;
-  ctx.telegram.sendChatAction(ctx.chat.id, "typing");
+  ctx.api.sendChatAction(ctx.chat.id, "typing");
 
   // match from and to from text
   try {

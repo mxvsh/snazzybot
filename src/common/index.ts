@@ -1,12 +1,14 @@
-import { Telegraf } from "telegraf";
+import { Composer } from "grammy";
 
-// Commands
+// Private chat commands
 import start from "./start";
 import help from "./help";
 
-const register = (bot: Telegraf) => {
-  bot.start(start);
-  bot.help(help);
-};
+const composer = new Composer();
 
-export default { register };
+composer
+  .filter((ctx) => ctx.chat.type == "private")
+  .use(start)
+  .use(help);
+
+export default composer;

@@ -1,10 +1,11 @@
 import axios from "axios";
 import cheerio from "cheerio";
+import { Context } from "grammy";
 import meta from "./meta";
 
-const Answer = async (ctx, params?) => {
-  if (!params) return;
-  ctx.telegram.sendChatAction(ctx.chat.id, "typing");
+const Answer = async (ctx: Context, params?: any) => {
+  if (!params || ctx.message.reply_to_message?.from?.id == ctx.me.id) return;
+  ctx.api.sendChatAction(ctx.chat.id, "typing");
 
   const text = ctx.message.text;
   let answer = "Not found.";
@@ -22,7 +23,14 @@ const Answer = async (ctx, params?) => {
       },
     })
     .then(({ data }) => {
-      const classes = ["kno-rdesc", "DjWnwf", "Z0LcW", "hgKElc", "vXQmIe", "UQt4rd"];
+      const classes = [
+        "kno-rdesc",
+        "DjWnwf",
+        "Z0LcW",
+        "hgKElc",
+        "vXQmIe",
+        "UQt4rd",
+      ];
 
       const $ = cheerio.load(data);
       const calcAns = $("input[jsname='fPLMtf']");

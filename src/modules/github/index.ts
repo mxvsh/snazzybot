@@ -1,16 +1,16 @@
-import { Context } from "telegraf";
+import { Context } from "grammy";
 import axios from "axios";
 
 import meta from "./meta";
 
 const Answer = async (ctx: Context, params?: any) => {
   if (!params) return;
-  ctx.telegram.sendChatAction(ctx.chat.id, "typing");
+  ctx.api.sendChatAction(ctx.chat.id, "typing");
 
   await axios
     .get(`https://api.github.com/users/${params}`)
     .then(async ({ data }) => {
-      await ctx.telegram.sendPhoto(ctx.chat.id, data.avatar_url, {
+      await ctx.api.sendPhoto(ctx.chat.id, data.avatar_url, {
         caption:
           `<b> ${data.name}</b>\n\n` +
           `👤 Username: ${data.name}\n` +
