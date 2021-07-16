@@ -22,19 +22,22 @@ const Answer = async (ctx, params?) => {
       },
     })
     .then(({ data }) => {
-      const classes = ["kno-rdesc", "DjWnwf", "Z0LcW", "hgKElc"];
+      const classes = ["kno-rdesc", "DjWnwf", "Z0LcW", "hgKElc", "vXQmIe"];
 
       const $ = cheerio.load(data);
-      for (let _class of classes) {
-        let text = $(`.${_class}`).text();
-        if (text) {
-          if (text.startsWith("Description")) {
-            text = text.replace(/^Description/g, "");
+      const calcAns = $("input[jsname='fPLMtf']");
+      if (calcAns) answer = `<b>${String(calcAns.val())}</b>`;
+      else
+        for (let _class of classes) {
+          let text = $(`.${_class}`).text();
+          if (text) {
+            if (text.startsWith("Description")) {
+              text = text.replace(/^Description/g, "");
+            }
+            answer = `<b>${text}</b>`;
+            break;
           }
-          answer = `<b>${text}</b>`;
-          break;
         }
-      }
     })
     .catch((err) => {
       answer = "Not found.";
