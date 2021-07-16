@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/xencodes/snazzybot/compare/v1.2.1...v1.2.2) (2021-07-16)
+
+
+### Bug Fixes
+
+* fix image processing ([614b044](https://github.com/xencodes/snazzybot/commits/614b044d7fc9820833e89473763b4ed2f44bfc51))
+
 ### [1.2.1](https://github.com/xencodes/snazzybot/compare/v1.2.0...v1.2.1) (2021-07-16)
 
 
