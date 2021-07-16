@@ -26,18 +26,18 @@ const Answer = async (ctx, params?) => {
 
       const $ = cheerio.load(data);
       const calcAns = $("input[jsname='fPLMtf']");
-      if (calcAns) answer = `<b>${String(calcAns.val())}</b>`;
-      else
-        for (let _class of classes) {
-          let text = $(`.${_class}`).text();
-          if (text) {
-            if (text.startsWith("Description")) {
-              text = text.replace(/^Description/g, "");
-            }
-            answer = `<b>${text}</b>`;
-            break;
+      for (let _class of classes) {
+        let text = $(`.${_class}`).text();
+        if (text) {
+          if (text.startsWith("Description")) {
+            text = text.replace(/^Description/g, "");
           }
+          answer = `<b>${text}</b>`;
+          break;
         }
+      }
+
+      if (!answer) answer = String(calcAns.val());
     })
     .catch((err) => {
       answer = "Not found.";
