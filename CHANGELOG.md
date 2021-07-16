@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/xencodes/snazzybot/compare/v1.2.2...v1.3.0) (2021-07-16)
+
+
+### 🎉 Features
+
+* add currency converter ([04035ab](https://github.com/xencodes/snazzybot/commits/04035abb2936cfa5e1f7a1777adce4501cdcdc4b))
+
 ### [1.2.2](https://github.com/xencodes/snazzybot/compare/v1.2.1...v1.2.2) (2021-07-16)
 
 
