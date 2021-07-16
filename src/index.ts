@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { Telegraf } from "telegraf";
+import { Context, Telegraf } from "telegraf";
 
 import common from "./common";
 import modules from "./modules";
@@ -15,7 +15,7 @@ modules.map((module) => {
     let params = "";
     params = ctx.match[1];
 
-    module.handler(ctx, params);
+    module.handler(ctx as Context, params);
   });
 });
 
