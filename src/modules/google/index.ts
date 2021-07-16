@@ -6,7 +6,7 @@ const Answer = async (ctx, params?) => {
   if (!params) return;
   ctx.telegram.sendChatAction(ctx.chat.id, "typing");
 
-  const { text } = ctx.message;
+  const text = ctx.message.text;
   let answer = "Not found.";
 
   // remove snazzy if starts
@@ -41,7 +41,8 @@ const Answer = async (ctx, params?) => {
     });
 
   ctx.reply(answer, {
-    parse_mode: "html",
+    parse_mode: "HTML",
+    reply_to_message_id: ctx.message.message_id,
   });
 };
 
