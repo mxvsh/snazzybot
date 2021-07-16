@@ -17,7 +17,7 @@ const Unsplash = async (ctx: Context, params?: any) => {
 
       const { results } = data;
 
-      if (results.length) {
+      if (results.length == 0) {
         ctx.reply(`Not found.`);
         return;
       }
