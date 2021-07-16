@@ -22,7 +22,7 @@ const Answer = async (ctx, params?) => {
       },
     })
     .then(({ data }) => {
-      const classes = ["kno-rdesc", "DjWnwf", "Z0LcW", "hgKElc", "vXQmIe"];
+      const classes = ["kno-rdesc", "DjWnwf", "Z0LcW", "hgKElc", "vXQmIe", "UQt4rd"];
 
       const $ = cheerio.load(data);
       const calcAns = $("input[jsname='fPLMtf']");
