@@ -8,7 +8,7 @@ const Answer = async (ctx: Context, params?: any) => {
   ctx.api.sendChatAction(ctx.chat.id, "typing");
 
   const text = ctx.message.text;
-  let answer = "Not found.";
+  let answer = "";
 
   // remove snazzy if starts
   const q = text.replace(/^snazzy/, "");
@@ -46,6 +46,11 @@ const Answer = async (ctx: Context, params?: any) => {
       }
 
       if (!answer) answer = String(calcAns.val());
+
+      if (answer) {
+        const unit = $("input[jsname='iNUlwe']").val();
+        answer += unit;
+      }
     })
     .catch((err) => {
       answer = "Not found.";
