@@ -78,6 +78,6 @@ const Answer = async (ctx: Context, params?: any) => {
 
 export default {
   handler: Answer,
-  match: /^(snazzy|what's|what is|whats) (.*)/,
+  match: /^(snazzy|what's|what is|whats) (.*)/i,
   ...meta,
 };
