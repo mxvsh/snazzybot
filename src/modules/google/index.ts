@@ -8,7 +8,8 @@ const Answer = async (ctx: Context, params?: any) => {
   ctx.api.sendChatAction(ctx.chat.id, "typing");
 
   const text = ctx.message.text;
-  let answer = "";
+  let answer = "",
+    last = "";
 
   // remove snazzy if starts
   const q = text.replace(/^snazzy/, "");
@@ -45,18 +46,31 @@ const Answer = async (ctx: Context, params?: any) => {
         }
       }
 
-      if (!answer) answer = String(calcAns.val());
+      if (!answer) {
+        const cals = String(calcAns.val());
+        answer = cals === "undefined" ? "" : cals;
+      }
 
       if (answer) {
-        const unit = $("input[jsname='iNUlwe']").val();
-        answer += unit;
+        // Get selected option from the dropdown
+        const unit = $("select[jsname='iNUlwe']");
+        unit.find("option").each((i, el) => {
+          const isSelected = $(el).attr("selected");
+          if (isSelected) {
+            last = $(el).text();
+          }
+        });
+      }
+
+      if (!answer) {
+        answer = $('div[data-dobid="dfn"]').text();
       }
     })
     .catch((err) => {
       answer = "Not found.";
     });
 
-  ctx.reply(answer, {
+  ctx.reply(`${answer} ${last}`, {
     parse_mode: "HTML",
     reply_to_message_id: ctx.message.message_id,
   });
