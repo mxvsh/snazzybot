@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/xencodes/snazzybot/compare/v1.4.2...v1.5.0) (2021-07-17)
+
+
+### 🎉 Features
+
+* add qr command ([4107c71](https://github.com/xencodes/snazzybot/commits/4107c71f85d8f2e93d67954529afc3eefcc32f89))
+
 ### [1.4.2](https://github.com/xencodes/snazzybot/compare/v1.4.1...v1.4.2) (2021-07-16)
 
 
