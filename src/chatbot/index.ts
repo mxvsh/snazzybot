@@ -22,7 +22,7 @@ composer.on("message", async (ctx) => {
   if (replyTo) {
     if (replyTo.from.id == ctx.me.id) {
       rivebot.reply(String(ctx.from.id), ctx.message.text).then((reply) => {
-        ctx.reply(reply, { reply_to_message_id: replyTo.message_id });
+        ctx.reply(reply, { reply_to_message_id: ctx.message.message_id });
       });
     }
   }
