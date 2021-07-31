@@ -7,7 +7,7 @@ import help from "./help";
 const composer = new Composer();
 
 composer
-  .filter((ctx) => ctx.chat.type == "private")
+  .filter((ctx) => ctx.chat?.type == "private")
   .use(start)
   .use(help);
 
