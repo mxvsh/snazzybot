@@ -20,6 +20,10 @@ modules.map((module) => {
   });
 });
 
+process.on("unhandledRejection", (err) => {
+  // todo: setup error loggin
+});
+
 bot.use(common);
 bot.use(chatbot);
 
